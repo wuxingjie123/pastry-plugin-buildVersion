@@ -1,0 +1,21 @@
+{
+  "name": "pastry-plugin-buildVersion",
+  "version": "1.0.0",
+  "description": "pastry 插件描述：安装包的版本管理插件",
+  "cordova": {
+    "id": "pastry-plugin-buildVersion",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pastryTeam/pastry-plugin-buildVersion.git"
+  },
+  "keywords": [
+    "buildVersion"
+  ],
+  "author": "author",
+  "license": "MIT"
+}
