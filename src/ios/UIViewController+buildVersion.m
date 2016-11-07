@@ -37,11 +37,27 @@
 
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
 {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *current_Version = [infoDictionary objectForKey:@"CFBundleVersion"];
-    NSString *mStr = [NSString stringWithFormat:@"当前版本号：%@", current_Version];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:mStr delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+    NSString *buildPath = [[NSBundle mainBundle] pathForResource:@"buildVersion.bundle/files/build.json" ofType:nil];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:buildPath]) {
+        
+        NSData *jsonData = [NSData dataWithContentsOfFile:buildPath];
+        NSDictionary *buildJson = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+        NSString *buildStr = @"";
+        for (NSString *key in buildJson.allKeys) {
+            
+            buildStr = [buildStr stringByAppendingFormat:@"%@:", key];
+            NSString *value = buildJson[key];
+            buildStr = [buildStr stringByAppendingFormat:@"%@ ",value];
+        }
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:buildStr delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+    else {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"此版本非Jenkins构建安装包" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 @end

@@ -2,22 +2,22 @@
 >
 |平台 | 是否支持 |
 |-----|------|
-|JS    | 支持 不支持    |
-|iOS    | 支持 不支持    |
-|android    | 支持 不支持    |
+|JS    | 不支持    |
+|iOS    | 支持  |
+|android    |  不支持    |
 
 # 依赖服务器数据
 >
 |平台 | 是否依赖 |
 |-----|------|
-|FO-Java    | 依赖 不依赖    |
-|FO-NodeJS    | 依赖 不依赖    |
+|FO-Java    |不依赖    |
+|FO-NodeJS    |  不依赖    |
 
 # 组件依赖关系
 >
 |组件 | 版本号 | 地址|
 |-----|------|----|
-|示例    | 版本号    | [GitHub地址](#)|
+|示例    | 版本号    | [GitHub地址](https://github.com/pastryTeam/pastry-plugin-buildVersion.git)|
 
 # 功能介绍
 >
@@ -57,7 +57,8 @@
 >
 * 如需修改功能
         
-    `待定`
+    引入类 #import "UIViewController+buildVersion.h"
+    调用方法：[self showShakeView];
 
 > 
 * 如需修改页面显示效果
